@@ -1,0 +1,327 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html .zh-CN {
+  font-family: 'Microsoft Yahei' !important;
+}
+
+html {
+  /*width: 100%;*/
+  height: 100%;
+  min-height: 100%;
+  font-size: 100%; 
+}
+
+@media only screen and (max-width: 1400px) {
+  html {font-size: 80%;}
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: darkgray;
+}
+
+.menu-bar {
+  width: 100%;
+  height: 3em;
+  display: flex;
+  background-color: darkslategray;
+  justify-content: space-between;
+}
+
+.menu-bar .menu-items {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.menu-items .menu-item {
+  width: 6em;
+  height: 2em;
+  color: white; 
+  border-style: none;
+  border-radius: 1px;
+  margin-right: 1em;
+  margin-left: 1em;
+  cursor: pointer;
+  background: none;
+}
+
+.menu-items .menu-item:hover {
+  background-color: darkgray;
+}
+
+.menu-bar .window-items {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.menu-bar .window-items .window-item {
+  height: 32px;
+  border-left: 2px solid cadetblue;
+  border-bottom: 2px solid cadetblue;
+}
+
+.menu-bar .window-items .window-item:hover {
+  background-color: darkgray;
+}
+
+.listview {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  position: absolute;
+  border-radius: .1em;
+  color: darkgray;
+  border: .1em solid white;
+  background-color: white; 
+  visibility: hidden;  
+  font-size: 90%;
+}
+
+
+.listview-files {
+  left: 2.5em;
+  top: 3em;
+  width: 5em;
+  height: 6em;
+}
+
+.listview-edit {
+  left: 9.5em;
+  top: 3em;
+  width: 6em;
+  height: 8em;
+}
+
+.listview-help {
+  left: 23em;
+  top: 3em;
+  width: 6em;
+  height: 1.5em; 
+}
+
+.listview-files span:hover {
+  background-color: darkslategray;
+}
+
+.listview-edit span:hover {
+  background-color: darkslategray;
+}
+
+.listview-help span:hover {
+  background-color: darkslategray;
+}
+
+.action-bar {
+  width: 40%;
+  height: 3em;
+  background: darkgray;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.action-bar .vsplit-line {
+  background-color: gray;
+  width: 2px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-right: 10px;  
+}
+
+.action-bar .action-item {
+  height: 28px;
+  width: 80px;
+  margin-right: 10px;
+  border: none;
+  color: white;
+  border-radius: 1px;
+  cursor: pointer;  
+  background: none;
+  outline: none;
+}
+
+.action-bar .action-item:hover {
+  background-color: darkslategray;    
+}
+
+.panel {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  background-color: darkslategray;
+}
+
+.panel-title {
+  height: 1.5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: slategray;
+}
+
+.panel-value {
+  height: 80%;  
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.attr-pair {
+  display: flex;
+  width: 95%;
+  height: 1.8em;
+  justify-content: space-between;
+}
+
+.attr-pair input {
+  width: 40%;
+  border: none;
+  border-radius: 5px;
+}
+
+.panel .left-panel {
+  height: 100%;
+  width: 20%;
+  background: darkslategray;
+}
+
+.panel .right-panel {
+  height: 100%;
+  width: 80%;
+  background: darkslategray;
+}
+
+.vpanel-split {
+  height: 100%;
+  width: .2em;
+  flex-shrink: 0;
+  background-color: whitesmoke;
+}
+
+.left-panel .panel-image {
+  width: 100%;
+  height: 30%;
+}
+
+.left-panel .panel-color {
+  width: 100%;
+  height: 20%;
+}
+
+.left-panel .panel-action {
+  width: 100%;
+  height: 50%;
+}
+
+.panel-image .panel-image-value {
+  cursor: pointer;
+  justify-content: center;  
+}
+
+.panel-image-value img {
+  max-height: 90%;
+  max-width: 90%;
+}
+
+.right-panel .panel-painter {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-painter-title {
+  height: 3%;
+  min-height: 1.5em;
+}
+
+.panel-painter-canvas {
+  width: 100%;
+  height: 95%;
+}
+
+.panel-painter-canvas #main-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.right-panel .panel-attr {
+  width: 100%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.panel-attr .adjust-visual-tabview {
+  position: absolute;
+  top: 10%;
+  height: 90%;
+  width: 100%;
+  visibility: hidden;
+}
+
+.adjust-visual-tabview canvas {
+  width: 100%;
+  height: 100%;
+  background-color: darkslategray;
+}
+
+.panel-attr .panel-attr-title {
+  justify-content: flex-start;
+  align-items: center;  
+  height: 10%;
+}
+
+.panel-basic-prop, .panel-visual-prop {
+  display: inline-block;
+  margin-right: .2em;
+  width: 5em;
+  height: 100%;
+}
+
+.panel-basic-prop input, .panel-visual-prop input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  cursor: pointer;  
+  color: white;
+  background-color: slategray;
+}
+
+.panel-basic-prop input:focus, .panel-visual-prop input:focus{
+  background-color: darkslategray;
+  outline: none;
+}
+
+.panel-attr-value {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.panel-attr-value .sub-panel-value {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around
+}

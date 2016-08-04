@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="zh-CN">
+  <head>
+    <title>HolaStudio-ParticlesBuilder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/img/favicon.png" rel="shortcut icon" type="image/png">
+    <script type="text/javascript" src="/js/particles-snow.js"></script>
+    <script type="text/javascript" src="/js/plist.js"></script>
+    <script type="text/javascript" src="/js/particles-latest.js"></script>
+    <script type="text/javascript" src="/js/data-binding.js"></script>
+    <script type="text/javascript" src="/js/FileSaver.min.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+  </head>
+  <body>
+    <div class="menu-bar">
+      <div class="menu-items">
+        <input type="image" src="/img/favicon.png">
+        <input class="menu-item" id="menu-item-file" type="button" value="文件">
+        <input class="menu-item" id="menu-item-edit" type="button" value="编辑">
+        <input class="menu-item" id="menu-item-view" type="button" value="视图">
+        <input class="menu-item" id="menu-item-help" type="button" value="帮助">
+      </div>
+      <div class="window-items">
+        <input id="min-icon" class="window-item" type="image" src="/img/min.png">
+        <input id="max-icon" class="window-item" type="image" src="/img/max.png">
+        <input id="close-icon" class="window-item" type="image" src="/img/close.png">
+      </div>
+    </div>
+    <div class="action-bar">
+      <input class="action-item" id="import" type="button" value="导入">
+      <input class="action-item" id="import-plist" type="button" value="导入Plist">      
+      <i class="vsplit-line"></i>      
+      <input class="action-item" id="export" type="button" value="导出">
+      <i class="vsplit-line"></i>
+      <!--<input class="action-item" id="preview" type="button" value="预览">-->
+      <input class="action-item" id="reset" type="button" value="重置参数">
+      <i class="vsplit-line"></i>      
+      <input class="action-item" id="replay" type="button" value="重播">
+      <input class="action-item" id="play-once" type="button" value="播放一次">
+      <input class="action-item" id="pause" type="button" value="暂停">
+      <input class="action-item" id="resume" type="button" value="恢复">
+    </div>
+    <div class="listview listview-files">
+      <span id="list-import">导入</span>
+      <span id="list-export">导出</span>
+      <span id="list-temp-star">模板-流星</span>
+      <span id="list-temp-snow">模板-雪花</span>
+    </div>
+    <div class="listview listview-edit">
+      <!--<span id="list-preview">预览</span>-->
+      <span id="list-reset">重置参数</span>
+      <span id="list-replay">重新播放</span>
+      <span id="list-paint-white">背景-白色</span>
+      <span id="list-paint-dark">背景-黑色</span>
+      <span id="list-paint-self">背景-自定义</span>
+    </div>
+    <div class="listview listview-help">
+      <span id="list-about">关于</span>
+    </div>
+    <div class="panel">
+      <div class="left-panel">
+        <div class="panel-image">
+          <div class="panel-title">
+            <span>纹理</span>
+          </div>
+          <div class="panel-value panel-image-value">
+            <img id="texture" src="/img/max.png"></img>
+          </div>
+        </div>
+        <div class="panel-color">
+          <div class="panel-title">
+            <span>颜色</span>
+            <label><input id="colorTrans-startColor" type="radio" name="colorTrans" value="startColor" checked>开始颜色</label>            
+            <label><input id="colorTrans-endColor" type="radio" name="colorTrans" value="endColor">结束颜色</label>            
+          </div>
+          <div class="panel-value">
+            <div class="attr-pair">
+              <span> 透明度：</span>
+              <input id="trans" type="number" max="255" min="0" value="100">
+            </div>
+            <div class="attr-pair">
+              <span> 透明度浮动：</span>
+              <input id="trans-diff" type="number" max="255" min="0" value="100">
+            </div>
+          </div>
+        </div>
+        <div class="panel-action">
+          <div class="panel-title">
+            <span>动作属性</span>            
+          </div>
+          <div class="panel-value">
+            <div class="attr-pair">            
+              <span> 重力x：</span>
+              <input id="gravityx" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 重力y：</span>
+              <input id="gravityy" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 初速度：</span>
+              <input id="speed" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 初速度浮动：</span>
+              <input id="speedVariance" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 径向加速度：</span>
+              <input id="radialAcceleration" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 径向加速度浮动：</span>
+              <input id="radialAccelVariance" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 切向加速度：</span>
+              <input id="tangentialAcceleration" type="number" max="255" min="0" value="0">
+            </div>
+            <div class="attr-pair">            
+              <span> 切向加速度浮动：</span>
+              <input id="tangentialAccelVariance" type="number" max="255" min="0" value="0">
+            </div>
+          </div>
+        </div>
+      </div>
+      <i class="vpanel-split"></i>
+      <div class="right-panel">
+        <div class="panel-painter">
+          <div class="panel-title panel-painter-title">
+            <span>渲染区</span>
+          </div>
+          <div class="panel-painter-canvas">
+            <canvas id="main-canvas"></canvas>
+          </div>
+        </div>
+        <div class="panel-attr">
+          <div class="adjust-visual-tabview">
+            <canvas id="visual-canvas">
+            </canvas>
+          </div>
+          <div class="panel-title panel-attr-title">
+            <div class="panel-basic-prop">
+              <input type="button" id="basic-prop" value="基本属性">
+            </div>
+            <div class="panel-visual-prop">
+              <input type="button" id="visual-prop" value="可视调节区">                       
+            </div>
+          </div>
+          <div class="panel-attr-value">
+            <div class="sub-panel-value">
+              <div class="attr-pair">            
+                <span> 发射时长：</span>
+                <input id="duration" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 发射最大粒子：</span>
+                <input id="maxParticles" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 发射位置x：</span>
+                <input id="sourcePositionx" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 发射位置浮动x：</span>
+                <input id="sourcePositionVariancex" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 发射位置y：</span>
+                <input id="sourcePositiony" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 发射位置y浮动：</span>
+                <input id="sourcePositionVariancey" type="number" max="255" min="0" value="0">
+              </div>
+            </div>
+            <i class="vpanel-split"></i>
+            <div class="sub-panel-value">
+              <div class="attr-pair">            
+                <span> 发射角度：</span>
+                <input id="angle" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 发射角度浮动：</span>
+                <input id="angleVariance" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子生命：</span>
+                <input id="particleLifespan" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子生命浮动：</span>
+                <input id="particleLifespanVariance" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子开始大小：</span>
+                <input id="startParticleSize" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子开始大小浮动：</span>
+                <input id="startParticleSizeVariance" type="number" max="255" min="0" value="0">
+              </div>
+            </div>
+            <i class="vpanel-split"></i>            
+            <div class="sub-panel-value">
+              <div class="attr-pair">            
+                <span> 粒子结束大小：</span>
+                <input id="finishParticleSize" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子结束大小浮动：</span>
+                <input id="finishParticleSizeVariance" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子开始旋转角度：</span>
+                <input id="rotationStart" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子开始旋转角度浮动：</span>
+                <input id="rotationStartVariance" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子结束旋转角度：</span>
+                <input id="rotationEnd" type="number" max="255" min="0" value="0">
+              </div>
+              <div class="attr-pair">            
+                <span> 粒子结束旋转角度浮动：</span>
+                <input id="rotationEndVariance" type="number" max="255" min="0" value="0">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bar">
+    </div>
+  </body>
+</html>
