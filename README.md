@@ -6,7 +6,7 @@ online particles builder
 >online editor [HolaStudio-ParticlesBuilder](http://studio.holaverse.cn/wtk/particles/)
 
 
-## fextures
+## features
 
 - online
 - visual
