@@ -7,4 +7,4 @@ app.use('/', express.static(__dirname));
 
 app.listen(8080);
 
-console.log("http://localhost:8080/html/index.html");
+console.log("http://localhost:8080/index.html");
