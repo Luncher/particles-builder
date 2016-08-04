@@ -465,7 +465,7 @@
   }
 
   function initWindowItems() {
-     if(!window.isOnlineVersion()) {
+     if(window.isOnlineVersion()) {
       const windowItems = document.querySelector('.window-items');
       windowItems.style.visibility = 'hidden';
     }
